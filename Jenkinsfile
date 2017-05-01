@@ -5,14 +5,14 @@ node("docker") {
 
     sh "git rev-parse HEAD > .git/commit-id"
     def commit_id = readFile('.git/commit-id').trim()
-    println commit_id
+    println "commit_id: $commit_id"
+    println "BRANCH_NAME: $BRANCH_NAME"
+    sh "set"
 
     stage "build"
     def app = docker.build "jameseckersall/jenkins-slave"
 
     stage "publish"
-    println env.BRANCH_NAME
-    sh "set"
     if (env.BRANCH_NAME.equals('master')) {
       app.push 'latest'
     }
