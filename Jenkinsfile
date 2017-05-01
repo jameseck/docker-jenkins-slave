@@ -3,6 +3,8 @@ node("docker") {
 
     git url: "https://github.com/jameseck/docker-jenkins-slave", credentialsId: 'github_creds'
 
+    BRANCH_NAME = sh ( script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
+
     sh "git rev-parse HEAD > .git/commit-id"
     def commit_id = readFile('.git/commit-id').trim()
     println "commit_id: $commit_id"
