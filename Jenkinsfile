@@ -4,6 +4,7 @@ node("docker") {
 
 /*    git url: "https://github.com/jameseck/docker-jenkins-slave", credentialsId: 'github_creds' */
     stage("checkout") {
+      sh "set"
       checkout scm
       BRANCH_NAME = sh ( script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
 
