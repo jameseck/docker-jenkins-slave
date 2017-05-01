@@ -11,6 +11,7 @@ node("docker") {
     def app = docker.build "jameseckersall/jenkins-slave"
 
     stage "publish"
+    println env.BRANCH_NAME
     if (env.BRANCH_NAME.equals('master')) {
       app.push 'latest'
     }
