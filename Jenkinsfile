@@ -12,6 +12,7 @@ node("docker") {
 
     stage "publish"
     println env.BRANCH_NAME
+    sh "set"
     if (env.BRANCH_NAME.equals('master')) {
       app.push 'latest'
     }
