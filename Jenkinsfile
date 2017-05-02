@@ -1,9 +1,7 @@
 #!/usr/bin/env groovy
 node("docker") {
- sh 'env > env.txt'
-    readFile('env.txt').split("\r?\n").each {
-        println it
-    }
+info.printNode()
+info.printEnv()
   docker.withRegistry('', 'docker_hub_creds') {
 
 /*    git url: "https://github.com/jameseck/docker-jenkins-slave", credentialsId: 'github_creds' */
