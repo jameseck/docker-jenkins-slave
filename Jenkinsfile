@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
+sh "env"
 node("docker") {
-info.printNode()
-info.printEnv()
+sh "env"
   docker.withRegistry('', 'docker_hub_creds') {
 
 /*    git url: "https://github.com/jameseck/docker-jenkins-slave", credentialsId: 'github_creds' */
