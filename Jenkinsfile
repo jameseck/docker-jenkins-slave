@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-sh "env"
 node("docker") {
 sh "env"
   docker.withRegistry('', 'docker_hub_creds') {
