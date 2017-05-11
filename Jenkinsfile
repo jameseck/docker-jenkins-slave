@@ -11,9 +11,8 @@ sh "env"
 
       BRANCH_NAME = sh ( script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
 
-      sh "git rev-parse HEAD > .git/commit-id"
-      def commit_id = readFile('.git/commit-id').trim()
-      println "commit_id: $commit_id"
+      COMMIT_ID = sh ( script: 'git rev-parse HEAD', returnsStdout: true).trim()
+      println "commit_id: $COMMIT_ID"
       println "BRANCH_NAME: $BRANCH_NAME"
     }
 
@@ -24,7 +23,7 @@ sh "env"
         if (env.BRANCH_NAME.equals('master')) {
           app.push 'latest'
         }
-        app.push "${commit_id}"
+        app.push "${COMMIT_ID}"
       }
     }
   }
