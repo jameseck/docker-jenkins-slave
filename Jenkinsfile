@@ -11,7 +11,7 @@ sh "env"
 
       BRANCH_NAME = sh ( script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
 
-      COMMIT_ID = sh ( script: 'git rev-parse HEAD', returnsStdout: true).trim()
+      COMMIT_ID = sh ( script: 'git rev-parse HEAD', returnStdout: true).trim()
       println "commit_id: $COMMIT_ID"
       println "BRANCH_NAME: $BRANCH_NAME"
     }
